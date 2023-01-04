@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Komunikator</string>
+
+    <string name="login_title">Zaloguj się</string>
+    <string name="login_text">Login</string>
+    <string name="password_text">Hasło</string>
+
+    <string name="register_title">Zarejestruj się</string>
+    <string name="name_text">Imię</string>
+    <string name="surname_text">Nazwisko</string>
+
+    <string name="submit_button">Potwierdź</string>
+
+    <string name="toggle_on">Pokazane</string>
+    <string name="toggle_off">Ukryte</string>
+
+    <string name="login_register_question">Nie masz jeszcze konta\nw naszym serwisie?</string>
+    <string name="login_register_button">Utwórz konto</string>
+
+    <string name="wrong_data_warning">Niepoprawne dane.</string>
+
+    <string name="menu_make_conversation">Utwórz nową konwersację</string>
+
+    <string name="search_people">Wyszukaj ludzi po ich loginie.</string>
+    <string name="button_search_people">Dodaj</string>
+
+    <string name="button_make_conversation">Utwórz</string>
+
+</resources>
