@@ -56,27 +56,31 @@ class RegisterActivity : AppCompatActivity() {
                 try {
                     authRepo.register(newUser)
                     withContext(Dispatchers.Main) {
-//                        Toast.makeText(
-//                            this@RegisterActivity,
-//                            "Registered!",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
+                        Toast.makeText(
+                            this@RegisterActivity,
+                            "Zarejestrowano!",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         finish()
                     }
                 }
                 catch (e: ConflictException) {
-//                    Toast.makeText(
-//                        this@RegisterActivity,
-//                        "Złe dane",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(
+                            this@RegisterActivity,
+                            "Złe dane",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
                 catch (e: InternalServerException) {
-//                    Toast.makeText(
-//                        this@RegisterActivity,
-//                        "Błąd serwera",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(
+                            this@RegisterActivity,
+                            "Błąd serwera",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
             }
         }

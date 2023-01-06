@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Komunikator</string>
+    <string name="app_name">Bezpieczny komunikator</string>
 
     <string name="login_title">Zaloguj się</string>
     <string name="login_text">Login</string>

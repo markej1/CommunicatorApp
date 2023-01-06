@@ -1,5 +1,6 @@
 package com.example.communicator.ui.login
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +21,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class LoginActivity : AppCompatActivity() {
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -49,16 +51,22 @@ class LoginActivity : AppCompatActivity() {
 
                 }
                 catch (e: NotAuthorizedException) {
-//                    Toast.makeText(this@LoginActivity,
-//                        "Niepoprawne dane logowania",
-//                        Toast.LENGTH_SHORT).show()
-//                    wrongDataWarning.text = "Niepoprawne dane logowania."
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(this@LoginActivity,
+                            "Niepoprawne dane logowania",
+                            Toast.LENGTH_SHORT).show()
+                        wrongDataWarning.text = "Niepoprawne dane logowania."
+                    }
                 }
                 catch (e: InternalServerException) {
-//                    Toast.makeText(this@LoginActivity,
-//                        "Błąd serwera",
-//                        Toast.LENGTH_SHORT).show()
-//                    wrongDataWarning.text = "Błąd serwera."
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(
+                            this@LoginActivity,
+                            "Błąd serwera",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        wrongDataWarning.text = "Błąd serwera."
+                    }
                 }
             }
         }

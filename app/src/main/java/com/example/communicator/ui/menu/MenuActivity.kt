@@ -1,5 +1,6 @@
 package com.example.communicator.ui.menu
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -7,6 +8,7 @@ import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.communicator.R
+import com.example.communicator.ui.newConversation.MakeNewConversationActivity
 
 class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +31,7 @@ class MenuActivity : AppCompatActivity() {
         super.onOptionsItemSelected(item)
         when (item.itemId) {
             R.id.option_make_conversation -> {
-
+                startActivity(Intent(this, MakeNewConversationActivity::class.java))
             }
         }
         return false
