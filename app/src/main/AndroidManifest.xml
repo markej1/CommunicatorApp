@@ -17,6 +17,15 @@
         android:theme="@style/Theme.Communicator"
         tools:targetApi="31">
         <activity
+            android:name=".ui.conversation.ConversationActivity"
+            android:exported="false"
+            android:label="@string/title_activity_conversation"
+            android:theme="@style/Theme.Communicator.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.newConversation.MakeNewConversationActivity"
             android:exported="false">
             <meta-data

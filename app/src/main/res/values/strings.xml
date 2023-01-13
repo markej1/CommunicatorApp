@@ -25,5 +25,8 @@
     <string name="button_search_people">Dodaj</string>
 
     <string name="button_make_conversation">Utwórz</string>
+    <string name="title_activity_conversation">ConversationActivity</string>
+
+    <string name="message_me">Ja</string>
 
 </resources>
