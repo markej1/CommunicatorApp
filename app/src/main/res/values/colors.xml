@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -10,4 +11,10 @@
 
     <color name="sunset">#FFFDBE85</color>
     <color name="ruby">#FF7B1500</color>
+    <color name="blue_lagoon">#FF10D4D4</color>
+    <color name="grey">#FF939393</color>
+
+    <color name="forest">#FF0C4204</color>
+    <color name="forest_at_night">#FF05240B</color>
+
 </resources>

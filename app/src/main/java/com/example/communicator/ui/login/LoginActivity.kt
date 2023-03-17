@@ -15,6 +15,7 @@ import com.example.communicator.exceptions.NotAuthorizedException
 import com.example.communicator.repos.AuthRepo
 import com.example.communicator.ui.menu.MenuActivity
 import com.example.communicator.ui.register.RegisterActivity
+import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -46,6 +47,7 @@ class LoginActivity : AppCompatActivity() {
                     editor.apply()
 
                     withContext(Dispatchers.Main) {
+                        intentMenu.putExtra("token", Gson().toJson(token))
                         startActivity(intentMenu)
                     }
 

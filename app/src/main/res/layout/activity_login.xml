@@ -6,6 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".ui.login.LoginActivity">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="500dp"
+        android:layout_height="750dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/szkocja" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="340dp"
+        android:layout_height="480dp"
+        android:background="@drawable/start_frame"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="304dp"
@@ -21,6 +47,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:fontFamily="@font/alata"
             android:gravity="center"
             android:text="@string/login_title"
             android:textAlignment="center"
@@ -31,17 +58,26 @@
             android:id="@+id/input_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:autofillHints=""
+            android:background="@drawable/message_input"
             android:ems="10"
+            android:hint="@string/login_text"
             android:inputType="textPersonName"
-            android:text="@string/login_text" />
+            android:minHeight="48dp"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:background="@drawable/message_input"
             android:ems="10"
+            android:hint="@string/password_text"
             android:inputType="textPassword"
-            android:text="@string/password_text" />
+            android:minHeight="48dp"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -59,6 +95,7 @@
             android:id="@+id/button_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/alata"
             android:text="@string/submit_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -78,6 +115,7 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:fontFamily="@font/alata"
             android:text="@string/login_register_question"
             android:textAlignment="center"
             android:textColor="#000000"
@@ -91,6 +129,7 @@
             android:id="@+id/button_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/alata"
             android:text="@string/login_register_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -102,10 +141,11 @@
         android:id="@+id/text_wrong_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="15dp"
         android:textColor="#FFFF0000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

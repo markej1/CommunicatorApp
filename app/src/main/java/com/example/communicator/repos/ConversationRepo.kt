@@ -1,11 +1,9 @@
 package com.example.communicator.repos
 
-import android.util.Log
-import com.example.communicator.exceptions.ConflictException
 import com.example.communicator.exceptions.InternalServerException
-import com.example.communicator.exceptions.NotAuthorizedException
+import com.example.communicator.model.Conversation
+import com.example.communicator.model.Participation
 import com.example.communicator.model.Token
-import com.example.communicator.model.User
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.cio.*
@@ -14,43 +12,47 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 
-class AuthRepo {
-    suspend fun login(login: String, pass: String): Token {
+class ConversationRepo {
+
+    suspend fun getConversations(token: Token): ArrayList<Conversation> {
         val client = HttpClient(CIO) {
             install(ContentNegotiation) {
                 json()
             }
         }
-        val response = client.get("http://192.168.8.100:8000/auth/login") {
+        val response = client.get("http://192.168.8.100:8000/conversation") {
             headers {
-                append("login", login)
-                append("password", pass)
+                append("userId", token.userId)
+                append("token", token.token)
             }
-            Log.i("headerbody", headers["login"].toString())
         }
         when (response.status.value) {
-            200 -> return response.body() as Token
-            404 -> throw NotAuthorizedException()
+            200 -> return response.body() as ArrayList<Conversation>
             else -> throw InternalServerException()
         }
     }
 
-    suspend fun register(user: User): Boolean {
+    suspend fun addConversations(token: Token, conversation: Conversation, login: String,
+                                 participation: Participation): Boolean {
         val client = HttpClient(CIO) {
             install(ContentNegotiation) {
                 json()
             }
         }
-        val response = client.post("http://192.168.8.100:8000/auth/register") {
+        val messageUrl = "http://192.168.8.100:8000/conversation/" + conversation.id + "/" + login
+        val response = client.post(messageUrl) {
+            headers {
+                append("userId", token.userId)
+                append("token", token.token)
+            }
             contentType(ContentType.Application.Json)
-            setBody(user)
-            Log.i("headerbody", body.toString())
+            setBody(participation)
         }
         when (response.status.value) {
             201 -> return true
-            409 -> throw ConflictException()
             else -> throw InternalServerException()
         }
 
     }
+
 }

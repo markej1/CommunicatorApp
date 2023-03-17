@@ -6,11 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".ui.register.RegisterActivity">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="500dp"
+        android:layout_height="750dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/szkocja" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="340dp"
+        android:layout_height="480dp"
+        android:background="@drawable/start_frame"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="304dp"
-        android:layout_height="295dp"
-        android:layout_marginBottom="340dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="280dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,6 +46,7 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:fontFamily="@font/alata"
             android:gravity="center"
             android:text="@string/register_title"
             android:textAlignment="center"
@@ -31,58 +57,73 @@
             android:id="@+id/editName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/message_input"
             android:ems="10"
+            android:layout_marginBottom="10dp"
             android:inputType="textPersonName"
-            android:text="@string/name_text" />
+            android:minHeight="48dp"
+            android:hint="@string/name_text"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/editSurname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/message_input"
             android:ems="10"
+            android:layout_marginBottom="10dp"
             android:inputType="textPersonName"
-            android:text="@string/surname_text" />
+            android:minHeight="48dp"
+            android:hint="@string/surname_text"
+            android:autofillHints="" />
 
         <EditText
-            android:id="@+id/editLogin"
+            android:id="@+id/edit_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/message_input"
             android:ems="10"
+            android:layout_marginBottom="10dp"
             android:inputType="textPersonName"
-            android:text="@string/login_text" />
+            android:minHeight="48dp"
+            android:hint="@string/login_text"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/editPassword"
             android:layout_width="match_parent"
-            android:layout_height="57dp"
+            android:layout_height="wrap_content"
             android:ems="10"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/message_input"
             android:inputType="textPassword"
-            android:text="@string/password_text"
+            android:minHeight="48dp"
+            android:hint="@string/password_text"
 
-            />
+            android:autofillHints="" />
 
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="304dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="6dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-        <ToggleButton
-            android:id="@+id/toggleButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textOff="@string/toggle_off"
-            android:textOn="@string/toggle_on"
+        <ImageButton
+            android:id="@+id/eye_button"
+            android:layout_width="59dp"
+            android:layout_height="48dp"
+            android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_eye" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -96,8 +137,9 @@
             android:id="@+id/button_submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
+            android:fontFamily="@font/alata"
             android:text="@string/submit_button"
+            android:layout_marginBottom="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

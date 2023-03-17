@@ -1,11 +1,9 @@
 package com.example.communicator.repos
 
-import com.example.communicator.exceptions.ConflictException
+import android.util.Log
 import com.example.communicator.exceptions.InternalServerException
-import com.example.communicator.exceptions.NotAuthorizedException
-import com.example.communicator.model.User
+import com.example.communicator.model.*
 import io.ktor.client.*
-import io.ktor.client.call.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
@@ -14,37 +12,25 @@ import io.ktor.serialization.kotlinx.json.*
 
 class SearchPeopleRepo {
 
-    suspend fun findPeople(login: String): User {
+    suspend fun addConversation(token: Token, convPart: ConvPart): Boolean {
         val client = HttpClient(CIO) {
             install(ContentNegotiation) {
                 json()
             }
         }
-        val response = client.get() {
+        val response = client.post("http://192.168.8.100:8000/conversation") {
             headers {
-                append("login", login)
+                append("userId", token.userId)
+                append("token", token.token)
             }
-        }
-        when (response.status.value) {
-            200 -> return response.body() as User
-            404 -> throw NotAuthorizedException()
-            else -> throw InternalServerException()
-        }
-    }
-
-    suspend fun addPeople(users: ArrayList<User>): Boolean {
-        val client = HttpClient(CIO) {
-            install(ContentNegotiation) {
-                json()
-            }
-        }
-        val response = client.post("") {
             contentType(ContentType.Application.Json)
-            setBody(users)
+            setBody(convPart)
+            Log.i("headerbody", headers["userId"].toString())
+            Log.i("headerbody", headers["token"].toString())
+            Log.i("headerbody", body.toString())
         }
         when (response.status.value) {
             201 -> return true
-            409 -> throw ConflictException()
             else -> throw InternalServerException()
         }
     }

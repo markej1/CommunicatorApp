@@ -6,8 +6,8 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
-import android.widget.ToggleButton
 import com.example.communicator.R
 import com.example.communicator.exceptions.ConflictException
 import com.example.communicator.exceptions.InternalServerException
@@ -24,23 +24,25 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        val hideButton = findViewById<ToggleButton>(R.id.toggleButton)
+        val hideButton = findViewById<ImageButton>(R.id.eye_button)
         val editPassword = findViewById<EditText>(R.id.editPassword)
+        var a = 0
 
-        hideButton.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
+        hideButton.setOnClickListener {
+            if (a==0) {
                 editPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                a=1
             }
             else {
                 editPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+                a=0
             }
         }
 
         val buttonSubmit = findViewById<Button>(R.id.button_submit)
-//        val intentLogin = Intent(this@RegisterActivity, LoginActivity::class.java)
         val editName = findViewById<EditText>(R.id.editName)
         val editSurname = findViewById<EditText>(R.id.editSurname)
-        val editLogin = findViewById<EditText>(R.id.editLogin)
+        val editLogin = findViewById<EditText>(R.id.edit_login)
 
         val authRepo = AuthRepo()
 
@@ -87,7 +89,5 @@ class RegisterActivity : AppCompatActivity() {
 
 
     }
-
-//    fun finishActivity(view: View) { finish() }
 
 }

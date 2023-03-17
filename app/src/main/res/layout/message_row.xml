@@ -53,19 +53,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginBottom="3dp"
-        android:text="TextView"
         android:textColor="#000000"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/text_message_time"
+        android:id="@+id/text_message_somebody_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginBottom="1dp"
-        android:text="TextView"
         android:textColor="#000000"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/text_message_somebody_login"
@@ -89,7 +87,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="1dp"
-        android:text="TextView"
         android:textColor="#000000"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/text_message_me_login"

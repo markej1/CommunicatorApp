@@ -2,14 +2,16 @@ package com.example.communicator.ui.newConversation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.communicator.R
 import com.example.communicator.exceptions.InternalServerException
-import com.example.communicator.model.*
-import com.example.communicator.repos.SearchPeopleRepo
+import com.example.communicator.model.Conversation
+import com.example.communicator.model.Participation
+import com.example.communicator.model.Token
+import com.example.communicator.model.User
+import com.example.communicator.repos.ConversationRepo
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.CoroutineScope
@@ -19,50 +21,50 @@ import kotlinx.coroutines.withContext
 import java.lang.reflect.Type
 import java.util.*
 
-class MakeNewConversationActivity : AppCompatActivity() {
+class AddFriendsActivity : AppCompatActivity() {
 
-    private lateinit var  token: Token
+    private lateinit var token: Token
+    private lateinit var conversation: Conversation
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_make_new_conversation)
+        setContentView(R.layout.activity_add_friends)
 
         val tokenJson = intent.getStringExtra("token")
         val type: Type = object : TypeToken<Token>() {}.type
         token = Gson().fromJson<Any>(tokenJson, type) as Token
 
-        val editLogin = findViewById<EditText>(R.id.edit_conversation_name)
-        val searchPeopleRepo = SearchPeopleRepo()
-        val buttonMake = findViewById<Button>(R.id.button_add_conversation)
+        val convJson = intent.getStringExtra("conversation")
+        val typeC: Type = object : TypeToken<Conversation>() {}.type
+        conversation = Gson().fromJson<Any>(convJson, typeC) as Conversation
 
-        buttonMake.setOnClickListener {
-            val newConversation = Conversation(
-                UUID.randomUUID().toString(),
-                System.currentTimeMillis(),
-                editLogin.text.toString()
+        val addButton = findViewById<Button>(R.id.button_make)
+        val conversationRepo = ConversationRepo()
+        val loginFriend = findViewById<EditText>(R.id.edit_login)
+
+        addButton.setOnClickListener {
+            val part = Participation(UUID.randomUUID().toString(),
+                User("","","","",""),
+                Conversation("",0,"")
             )
-            val newParticipationId = ParticipationId(
-                UUID.randomUUID().toString()
-            )
-
-            val newConvPart = ConvPart(newConversation, newParticipationId)
-            val newConvPartJson = Gson().toJson(newConvPart)
-
-            Log.d("json", newConvPartJson.toString())
             CoroutineScope(Dispatchers.IO).launch {
                 try {
-                    searchPeopleRepo.addConversation(token, newConvPart)
+                    conversationRepo.addConversations(token, conversation,
+                        loginFriend.text.toString(), part)
                     withContext(Dispatchers.Main) {
-                        Toast.makeText(this@MakeNewConversationActivity,
-                            "Dodano nową konwersację",
-                            Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@AddFriendsActivity,
+                            "Dodano!",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         finish()
                     }
+
                 }
                 catch (e: InternalServerException) {
                     withContext(Dispatchers.Main) {
                         Toast.makeText(
-                            this@MakeNewConversationActivity,
+                            this@AddFriendsActivity,
                             "Błąd serwera",
                             Toast.LENGTH_SHORT
                         ).show()
@@ -71,7 +73,5 @@ class MakeNewConversationActivity : AppCompatActivity() {
             }
         }
 
-
     }
-
 }

@@ -20,11 +20,14 @@
     <string name="wrong_data_warning">Niepoprawne dane.</string>
 
     <string name="menu_make_conversation">Utwórz nową konwersację</string>
+    <string name="menu_add_people">Dodaj użytkowników</string>
+    <string name="no_conversations">Brak konwersacji</string>
 
     <string name="search_people">Wyszukaj ludzi po ich loginie.</string>
     <string name="button_search_people">Dodaj</string>
 
     <string name="button_make_conversation">Utwórz</string>
+    <string name="name_conversation">Wpisz nazwę konwersacji</string>
     <string name="title_activity_conversation">ConversationActivity</string>
 
     <string name="message_me">Ja</string>
