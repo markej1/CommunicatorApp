@@ -12,13 +12,17 @@ import io.ktor.serialization.kotlinx.json.*
 
 class SearchPeopleRepo {
 
+//    TODO: Choose ip address and port
+    private val ipAddress: String = ""
+    private val port = ""
+
     suspend fun addConversation(token: Token, convPart: ConvPart): Boolean {
         val client = HttpClient(CIO) {
             install(ContentNegotiation) {
                 json()
             }
         }
-        val response = client.post("http://192.168.8.100:8000/conversation") {
+        val response = client.post("http://$ipAddress:$port/conversation") {
             headers {
                 append("userId", token.userId)
                 append("token", token.token)

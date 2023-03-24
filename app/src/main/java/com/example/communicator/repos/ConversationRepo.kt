@@ -14,13 +14,17 @@ import io.ktor.serialization.kotlinx.json.*
 
 class ConversationRepo {
 
+//    TODO: Choose ip address and port
+    private val ipAddress: String = ""
+    private val port = ""
+
     suspend fun getConversations(token: Token): ArrayList<Conversation> {
         val client = HttpClient(CIO) {
             install(ContentNegotiation) {
                 json()
             }
         }
-        val response = client.get("http://192.168.8.100:8000/conversation") {
+        val response = client.get("http://$ipAddress:$port/conversation") {
             headers {
                 append("userId", token.userId)
                 append("token", token.token)
@@ -39,7 +43,7 @@ class ConversationRepo {
                 json()
             }
         }
-        val messageUrl = "http://192.168.8.100:8000/conversation/" + conversation.id + "/" + login
+        val messageUrl = "http://$ipAddress:$port/conversation/" + conversation.id + "/" + login
         val response = client.post(messageUrl) {
             headers {
                 append("userId", token.userId)

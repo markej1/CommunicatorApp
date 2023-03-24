@@ -15,13 +15,18 @@ import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 
 class AuthRepo {
+
+//    TODO: Choose ip address and port
+    private val ipAddress: String = ""
+    private val port = ""
+
     suspend fun login(login: String, pass: String): Token {
         val client = HttpClient(CIO) {
             install(ContentNegotiation) {
                 json()
             }
         }
-        val response = client.get("http://192.168.8.100:8000/auth/login") {
+        val response = client.get("http://$ipAddress:$port/auth/login") {
             headers {
                 append("login", login)
                 append("password", pass)
@@ -41,7 +46,7 @@ class AuthRepo {
                 json()
             }
         }
-        val response = client.post("http://192.168.8.100:8000/auth/register") {
+        val response = client.post("http://$ipAddress:$port/auth/register") {
             contentType(ContentType.Application.Json)
             setBody(user)
             Log.i("headerbody", body.toString())
